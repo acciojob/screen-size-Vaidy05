@@ -1,9 +1,10 @@
 const expectedWidth = window.innerWidth;
 const expectedHeight = window.innerHeight;
 const item = document.querySelector("#sizeInfo h1");
-window.onload = function(){
+window.onload = new ResizeObserver(() => {
 		item.innerHTML="Width: "+expectedWidth+" and Height: "+expectedHeight;
-	};
-window.onresize = function(){
+	})
+let resizeObserver = new ResizeObserver(() => {
 		item.innerHTML="Width: "+expectedWidth+" and Height: "+expectedHeight;
-	};
+	})
+resizeObserver.observe(document.getElementsByTagName("body")[0]);
